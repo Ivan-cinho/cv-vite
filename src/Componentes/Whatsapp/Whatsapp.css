@@ -1,0 +1,32 @@
+
+
+.whatsapp-boton {
+    position: fixed;
+    bottom: 1.5rem; /* Distancia del borde inferior */
+    right: 1.5rem; /* Distancia del borde derecho */
+    width: 3.2rem; /* Tamaño del botón */
+    height: 3.2rem;
+    background-color: var(--color-whatsapp); /* Color de fondo verde */
+    border-radius: 50%; /* Forma circular */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    z-index: 1000; /* Asegura que quede encima de otros elementos */
+  }
+
+  
+  .whatsapp-boton:hover{
+    transform: scale(1.1); /* Efecto hover */
+    background-color: var(--color-texto-2); /* Color más claro al pasar el mouse */
+  }
+  
+  .whatsapp-icon {
+    color: white; /* Color del ícono */
+    font-size: 2.1rem; /* Tamaño del ícono */
+  }
+  
+.whatsapp-icon:hover {
+    color: var(--color-whatsapp);
+}

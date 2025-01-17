@@ -1,0 +1,51 @@
+/* Estilos para el contenedor principal */
+.header {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Imagen de fondo con efecto parallax y desenfoque aplicado */
+.imagen-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("./public/imagenes/fondo.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Parallax */
+    filter: blur(5px); /* Desenfoque suave */
+    z-index: -1;
+}
+
+/* Contenedor unificado para el efecto desenfocado */
+.texto-header {
+    position: absolute;
+    top: 40%;
+    left: 58%;
+    transform: translate(-50%, -50%);
+    text-align: center;    
+    z-index: 1;
+}
+
+/* Título principal */
+.titulo {
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--color-texto-2);
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Sombra para darle más contraste */
+}
+
+/* Subtítulo */
+.subtitulo {
+    font-size: 2rem;
+    color: var(--color-texto-2);
+    margin-top: 10px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Suavizado del gradiente y parallax */
+

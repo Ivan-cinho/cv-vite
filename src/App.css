@@ -1,0 +1,126 @@
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: visible; /* permite ver si hay un desbordamiento sin ocultarlo */
+}
+.contenedor-principal {
+  margin-top: 3vw;
+  margin-left: 15vw;
+  /* margin-right: 2vw;  */
+  width: 85vw; 
+}
+
+.contenedor-secundario {
+  padding-left: 2.5%;
+  padding-right: 2%;
+}
+
+.contenedor-subseccion {
+  margin-bottom: 5%;
+}
+
+.contraste {
+  background-color: var(--color-5);
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+  h2 {
+    text-align: center;
+  }
+
+  h3 {
+    margin-bottom: 1vw;
+    text-align: center;
+  }
+
+  /* colores */
+  :root {
+    --color-1: #001122; /* Principal */
+    --color-2: #213547; /* Secundario */
+    --color-3: #149ddd; /* Terciario */
+    --color-4:#b8b4b4;
+    --color-5: #e8edf7;
+    --color-whatsapp: #25d366;
+    --color-texto-1: black; /* Texto principal */
+    --color-texto-2: white; /* Texto secundario */
+}
+  
+
+/* acordeones */
+
+/* Sección del acordeón */
+
+.acordeon-section {
+  width: 90%; 
+  margin: auto;
+  transition: background-color 0.3s ease; 
+}
+
+.acordeon-section:hover {
+  background-color: var(--color-5); 
+}
+
+.acordeon-formacion:hover {
+  background-color: var(--color-texto-2);
+}
+
+/* Contenido interno del acordeón */
+.acordeon-section .contenido {
+  max-height: 0; 
+  overflow: hidden; 
+  transition: max-height 0.4s ease-in-out; 
+  display: flex;
+  flex-direction: column; 
+  text-align: center; /* Alineación del texto a la izquierda */
+  
+}
+
+.acordeon-section .contenido.expandido p {
+  padding-bottom: 15px; 
+}
+
+/* Cuando una sección está expandida */
+.acordeon-section .contenido.expandido {
+  max-height: 500px; /* Altura máxima para la expansión */
+}
+
+.acordeon-section .chevron {
+  transition: transform 0.4s ease-in-out; /* Animación uniforme para ambos estados */
+}
+
+/* Chevron: rotación al expandir */
+.acordeon-section .chevron.rotado {
+  transform: rotate(-90deg); /* Rotación del chevron cuando el acordeón está expandido */
+}
+
+/* Estilo del título del acordeón */
+.acordeon-section h4 {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px; /* Espaciado interno */
+}
+
+/* Efecto hover en el título */
+.acordeon-section h4:hover {
+  color: #333; /* Cambiar el color del texto como efecto adicional */
+}
+
+/* cards */
+
+.certificacion-card, .referencias {
+  display: flex;
+  justify-content: space-around;
+}
+

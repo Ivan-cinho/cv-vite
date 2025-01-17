@@ -1,0 +1,109 @@
+
+aside {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 15vw;
+    height: 100vh;
+    background-color: #001122;
+    padding: 2vh 1vw;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.contenedor-imagen {
+    display: flex;
+    justify-content: center;
+}
+
+.imagen {
+    width: 80%; /* Ocupa un 80% del ancho del aside */
+    height: auto; /* Para mantener las proporciones */
+    border-radius: 50%; /* Hace que la imagen sea redonda */
+    border: 10px solid var(--color-2);
+    margin-bottom: 2vh; /* Espacio debajo de la imagen */
+}
+
+section {
+    margin-bottom: 3vh; /* Espacio entre las secciones */
+}
+
+.nav {
+    margin-left: 2vw;
+}
+
+
+ul {
+    list-style: none;
+    padding: 0;
+    font-size: 1.2vw; /* Tamaño de fuente adaptativo */
+}
+
+li {
+    margin-bottom: 1vh;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+li:hover {
+    color: var(--color-texto-2);
+}
+
+.contacto {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.iconos {
+    font-size: 18px;
+    display: inline-block;
+    background: #213547;
+    color: var(--color-3);
+    line-height: 1;
+    padding: 8px 0;
+    margin-right: 4px;
+    border-radius: 50%;
+    text-align: center;
+    width: 36px;
+    height: 36px;
+    transition: 0.3s;
+}
+
+.contacto a:hover {
+    color: var(--color-texto-2); /* Color del ícono al hacer hover */
+}
+
+.nav ul li {
+    color: var(--color-4); /* Color de texto inicial en hexadecimal */
+    display: flex;
+    align-items: center; /* Centra el ícono y el texto verticalmente */
+    gap: 0.5rem; /* Espaciado entre el ícono y el texto */
+    padding: 0.5rem; /* Espaciado interno para mejor clicabilidad */
+    border-radius: 4px; /* Opcional: añade bordes redondeados */
+    transition: color 0.3s ease, background-color 0.3s ease; /* Suaviza los cambios de color */
+}
+
+
+.nav ul li:hover {
+    color: var(--color-texto-2); /* Color del texto al pasar el cursor */
+   
+}
+
+.nav ul li:hover svg {
+    color: var(--color-3); /* Color del ícono al pasar el cursor */
+}
+
+.nav ul li svg {
+    font-size: 1.5rem; /* Tamaño de los íconos */
+    color: #f0f0f0; /* Color inicial del ícono */
+    transition: color 0.3s ease; /* Suaviza el cambio de color en el ícono */
+}
+
+.nav ul li.active {
+    color: var(--color-texto-2); /* Resalta el texto */
+    font-weight: bold; /* Texto más destacado */
+}
+
+.nav ul li.active svg {
+    color: var(--color-3); /* Resalta el ícono */
+}
