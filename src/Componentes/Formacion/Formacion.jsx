@@ -3,13 +3,12 @@ import { useState, useEffect } from "react";
 import { getDataSecundariaSuperior, getDataTecnicaturaCursos, getTitulos } from "../../../firebaseUtils";
 import Swal from "sweetalert2";
 import { SlArrowDown } from "react-icons/sl";
-import "./Formacion.css";
 
 const Formacion = () => {
-    const [activeSections, setActiveSections] = useState([]); // Estado para secciones activas
-    const [secundariaSuperior, setSecundariaSuperior] = useState([]); // Datos de secundaria y superior
-    const [tecnicaturaCursos, setTecnicaturaCursos] = useState([]); // Datos de cursos y tecnicaturas
-    const [titulos, setTitulos] = useState([]); // Datos de títulos y certificaciones
+    const [activeSections, setActiveSections] = useState([]);
+    const [secundariaSuperior, setSecundariaSuperior] = useState([]);
+    const [tecnicaturaCursos, setTecnicaturaCursos] = useState([]);
+    const [titulos, setTitulos] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -21,6 +20,7 @@ const Formacion = () => {
                 setSecundariaSuperior(secundariaData);
                 setTecnicaturaCursos(tecnicaturaData);
                 setTitulos(titulosData);
+                
             } catch (error) {
                 console.error("Error al cargar los datos:", error);
             }
@@ -28,8 +28,9 @@ const Formacion = () => {
         fetchData();
     }, []);
 
+    
     const toggleSection = (sectionType, index) => {
-        const sectionId = `${sectionType}-${index}`; // Crear un identificador único para cada sección
+        const sectionId = `${sectionType}-${index}`; 
         setActiveSections(prevSections => {
             if (prevSections.includes(sectionId)) {
                 return prevSections.filter(section => section !== sectionId);
@@ -41,11 +42,11 @@ const Formacion = () => {
 
     const handleImageClick = (imageUrl, title) => {
         Swal.fire({
-            title: title,
             imageUrl: imageUrl,
-            imageWidth: 600,
+            imageWidth: 800,
             imageAlt: title,
-            confirmButtonText: "Cerrar",
+            showConfirmButton: false,
+            
         });
     };
 
@@ -102,3 +103,4 @@ const Formacion = () => {
 };
 
 export default Formacion;
+

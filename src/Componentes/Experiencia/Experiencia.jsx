@@ -2,9 +2,7 @@
 import { useState, useEffect } from "react";
 import { getDataEmpleadores, getDataReferencias } from "../../../firebaseUtils";
 import { SlArrowDown } from "react-icons/sl";
-import { MdPhoneIphone, MdMailOutline } from "react-icons/md";
 import { FaLinkedinIn } from "react-icons/fa6";
-import "./Experiencia.css";
 
 const Experiencia = () => {
   const [activeSections, setActiveSections] = useState([]);
@@ -62,17 +60,15 @@ const Experiencia = () => {
         <h3>Referencias</h3>
       <div className="referencias">
         {referencias.map((ref, index) => (
-          <div key={index} className="card-referencia">
+          <div key={index} className="card">
             <h4>{ref.nombre}</h4>
             {ref.telefono && (
               <p>
-                <MdPhoneIphone />
                 {ref.telefono}
               </p>
             )}
             {ref.email && (
               <p>
-                <MdMailOutline />
                 {ref.email}
               </p>
             )}

@@ -1,9 +1,9 @@
-import { getDownloadURL, ref } from "firebase/storage";
-import { storage } from "./firebaseConfig";
+import { getStorage, getDownloadURL, ref } from "firebase/storage";
+// import { storage } from "./firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebaseConfig";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
-
+const storage = getStorage();
 
 // aside.jsx
 export const getImagenPerfil = async () => {
@@ -24,7 +24,7 @@ export const getDataContactos = async () => {
     try {
       const querySnapshot = await getDocs(collection(db, "contacto"));
       const linksContacto = querySnapshot.docs
-        .filter((doc) => doc.id !== "whatsapp") // Excluye el documento con id 'whatsapp'
+        .filter((doc) => doc.id !== "whatsapp") 
         .map((doc) => ({
           id: doc.id,
           ...doc.data(),
@@ -119,19 +119,63 @@ export const getDataTecnicaturaCursos = async () => {
     }
 };
 
+// export const getTitulos = async () => {
+//     try {
+//         const querySnapshot = await getDocs(collection(db, "titulos y certificaciones"));
+//         return querySnapshot.docs.map(doc => ({
+//             id: doc.id,
+//             ...doc.data(),
+            
+//         }));
+//     } catch (error) {
+//         console.error("Error al obtener títulos y certificaciones:", error);
+//         return [];
+//     }
+// };
+
+// export const getTitulos = async () => {
+//     try {
+//         const querySnapshot = await getDocs(collection(db, "titulos y certificaciones"));
+//         const titulosData = querySnapshot.docs.map((doc) => {
+//             const data = doc.data();
+//             console.log("Documento obtenido:", data);
+//             return { id: doc.id, ...data };
+//         });
+
+//         console.log("Títulos completos:", titulosData);
+//         return titulosData;
+//     } catch (error) {
+//         console.error("Error al obtener títulos y certificaciones:", error);
+//         return [];
+//     }
+// };
+
+
+
 export const getTitulos = async () => {
     try {
         const querySnapshot = await getDocs(collection(db, "titulos y certificaciones"));
-        return querySnapshot.docs.map(doc => ({
-            id: doc.id,
-            ...doc.data(),
-        }));
+        const titulosData = await Promise.all(
+            querySnapshot.docs.map(async (doc) => {
+                const data = doc.data();
+                try {
+                    // Obtener la URL de la imagen en Firebase Storage
+                    const imageUrl = await getDownloadURL(ref(storage, data.imagen));
+                    return { id: doc.id, ...data, imagen: imageUrl };
+                } catch (error) {
+                    console.error("Error obteniendo imagen:", data.imagen, error);
+                    return { id: doc.id, ...data, imagen: "/fallback-image.jpg" }; // Imagen por defecto si falla
+                }
+            })
+        );
+
+        console.log("Títulos completos con URLs:", titulosData);
+        return titulosData;
     } catch (error) {
         console.error("Error al obtener títulos y certificaciones:", error);
         return [];
     }
 };
-
 
 // referencias.js
 export const getDataEmpleadores = async () => {
@@ -165,18 +209,18 @@ export const getDataEmpleadores = async () => {
 
 export const getWhatsApp = async () => {
     try {
-      const db = getFirestore();
-      const docRef = doc(db, "contacto", "whatsapp"); // Ruta al documento 'whatsapp'
-      const docSnap = await getDoc(docRef);
-  
-      if (docSnap.exists()) {
-        return docSnap.data().telefono; // Retorna el campo 'telefono'
-      } else {
-        console.error("El documento 'whatsapp' no existe.");
-        return null;
-      }
+        const db = getFirestore();
+        const docRef = doc(db, "contacto", "whatsapp");
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+        return docSnap.data().telefono;
+            } else {
+                console.error("El documento 'whatsapp' no existe.");
+                return null;
+        }
     } catch (error) {
-      console.error("Error al obtener el enlace de WhatsApp desde Firebase:", error);
-      return null;
+        console.error("Error al obtener el enlace de WhatsApp desde Firebase:", error);
+        return null;
     }
-  };
+};

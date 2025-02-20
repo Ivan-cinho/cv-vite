@@ -15,7 +15,6 @@ body, html {
 .contenedor-principal {
   margin-top: 3vw;
   margin-left: 15vw;
-  /* margin-right: 2vw;  */
   width: 85vw; 
 }
 
@@ -118,9 +117,80 @@ body, html {
 }
 
 /* cards */
-
 .certificacion-card, .referencias {
   display: flex;
   justify-content: space-around;
+}
+
+.Portafolios {
+  display: flex;
+  gap: 20px;
+
+  justify-content: space-around;
+}
+
+.certificacion-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1%; 
+  width: 100%; /* Asegura que el contenedor ocupe el 100% del ancho disponible */
+  max-width: 100%; /* Evita que el contenedor desborde */
+  margin: 0 auto; /* Centrar el contenedor */
+  padding: 0 1%; /* Espaciado lateral en porcentaje */
+  box-sizing: border-box; /* Incluye el padding en el ancho total */
+}
+
+.card {
+  background-color: #fff; /* Fondo blanco */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  padding: 15px; /* Espaciado interno */
+  margin: 1%;
+  width: 17vw; /* Ancho fijo para todas las tarjetas */
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+}
+
+
+.card:hover {
+  transform: translateY(-5px); /* Eleva la tarjeta */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Aumenta la sombra */
+}
+
+.card h4 {
+font-size: 1.2rem;
+margin-bottom: 4%;
+color:var(--color-3); /* Color personalizado para los títulos */
+}
+
+.card P{
+  margin-bottom: 4%;
+  font-size: 1vw;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.card a {
+  color: var(--color-3);
+  text-decoration: none;
+  font-size: 1.5vw;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}
+
+
+.referencias {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan en varias filas si no caben */
+  gap: 1%; /* Espaciado entre las tarjetas */
+  justify-content: center; /* Centra las tarjetas horizontalmente */
+  margin-top: 20px;
+  padding: 10px;
 }
 

@@ -1,7 +1,6 @@
 
 import { useEffect, useState } from "react";
 import { getCartaPresentacion, getDataInicio } from "../../../firebaseUtils";
-import "./Inicio.css";
 
 const Inicio = () => {
   const [data, setData] = useState({ cartaPresentacion: "", portafolios: [] });
@@ -9,13 +8,8 @@ const Inicio = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Obtener la carta de presentación
         const carta = await getCartaPresentacion();
-
-        // Obtener los portafolios
         const portafolios = await getDataInicio();
-
-        // Actualizar el estado
         setData({ cartaPresentacion: carta, portafolios });
       } catch (error) {
         console.error("Error al cargar los datos de inicio:", error);
