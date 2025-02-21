@@ -60,7 +60,7 @@ const Experiencia = () => {
         <h3>Referencias</h3>
       <div className="referencias">
         {referencias.map((ref, index) => (
-          <div key={index} className="card">
+          <div key={index} className="referencias-card">
             <h4>{ref.nombre}</h4>
             {ref.telefono && (
               <p>

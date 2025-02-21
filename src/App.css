@@ -10,7 +10,7 @@
 body, html {
   margin: 0;
   padding: 0;
-  overflow-x: visible; /* permite ver si hay un desbordamiento sin ocultarlo */
+  overflow-x: visible;
 }
 .contenedor-principal {
   margin-top: 3vw;
@@ -44,21 +44,19 @@ body, html {
 
   /* colores */
   :root {
-    --color-1: #001122; /* Principal */
-    --color-2: #213547; /* Secundario */
-    --color-3: #149ddd; /* Terciario */
+    --color-1: #001122;
+    --color-2: #213547;
+    --color-3: #149ddd;
     --color-4:#b8b4b4;
     --color-5: #e8edf7;
     --color-whatsapp: #25d366;
-    --color-texto-1: black; /* Texto principal */
-    --color-texto-2: white; /* Texto secundario */
+    --color-texto-1: black;
+    --color-texto-2: white;
 }
   
 
 /* acordeones */
-
 /* Sección del acordeón */
-
 .acordeon-section {
   width: 90%; 
   margin: auto;
@@ -80,7 +78,7 @@ body, html {
   transition: max-height 0.4s ease-in-out; 
   display: flex;
   flex-direction: column; 
-  text-align: center; /* Alineación del texto a la izquierda */
+  text-align: center;
   
 }
 
@@ -90,16 +88,16 @@ body, html {
 
 /* Cuando una sección está expandida */
 .acordeon-section .contenido.expandido {
-  max-height: 500px; /* Altura máxima para la expansión */
+  max-height: 500px;
 }
 
 .acordeon-section .chevron {
-  transition: transform 0.4s ease-in-out; /* Animación uniforme para ambos estados */
+  transition: transform 0.4s ease-in-out;
 }
 
 /* Chevron: rotación al expandir */
 .acordeon-section .chevron.rotado {
-  transform: rotate(-90deg); /* Rotación del chevron cuando el acordeón está expandido */
+  transform: rotate(-90deg);
 }
 
 /* Estilo del título del acordeón */
@@ -108,12 +106,12 @@ body, html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 15px; /* Espaciado interno */
+  padding: 10px 15px;
 }
 
 /* Efecto hover en el título */
 .acordeon-section h4:hover {
-  color: #333; /* Cambiar el color del texto como efecto adicional */
+  color: #333;
 }
 
 /* cards */
@@ -133,34 +131,34 @@ body, html {
   display: flex;
   flex-wrap: wrap;
   gap: 1%; 
-  width: 100%; /* Asegura que el contenedor ocupe el 100% del ancho disponible */
-  max-width: 100%; /* Evita que el contenedor desborde */
-  margin: 0 auto; /* Centrar el contenedor */
-  padding: 0 1%; /* Espaciado lateral en porcentaje */
-  box-sizing: border-box; /* Incluye el padding en el ancho total */
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 1%;
+  box-sizing: border-box;
 }
 
 .card {
-  background-color: #fff; /* Fondo blanco */
-  border-radius: 10px; /* Bordes redondeados */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-  padding: 15px; /* Espaciado interno */
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px;
   margin: 1%;
-  width: 17vw; /* Ancho fijo para todas las tarjetas */
+  width: 17vw;
   transition: transform 0.3s, box-shadow 0.3s;
   text-align: center;
 }
 
 
 .card:hover {
-  transform: translateY(-5px); /* Eleva la tarjeta */
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Aumenta la sombra */
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
 .card h4 {
 font-size: 1.2rem;
 margin-bottom: 4%;
-color:var(--color-3); /* Color personalizado para los títulos */
+color:var(--color-3);
 }
 
 .card P{
@@ -187,10 +185,45 @@ color:var(--color-3); /* Color personalizado para los títulos */
 
 .referencias {
   display: flex;
-  flex-wrap: wrap; /* Permite que los elementos se envuelvan en varias filas si no caben */
-  gap: 1%; /* Espaciado entre las tarjetas */
-  justify-content: center; /* Centra las tarjetas horizontalmente */
+  flex-wrap: wrap;
+  gap: 1%;
+  justify-content: center;
   margin-top: 20px;
   padding: 10px;
 }
 
+.referencias-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin: 1%;
+  width: 17vw;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+}
+
+.referencias-card h4 {
+  font-size: 1.2rem;
+  margin-bottom: 4%;
+  color:var(--color-3);
+  }
+
+  .referencias-card a {
+    padding-top: 2%;
+    display: block;
+    margin: auto;
+    color: var(--color-3);
+    text-decoration: none;
+    font-size: 1.5vw;
+  }
+
+  .referencias-card a:hover {
+    background: var(--color-5);
+    color: var(--color-3);
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+    border-radius: 50%;
+    width: 20%;
+    height: 20%;
+
+  }
