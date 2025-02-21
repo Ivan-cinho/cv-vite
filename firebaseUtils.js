@@ -1,9 +1,20 @@
 import { getStorage, getDownloadURL, ref } from "firebase/storage";
-// import { storage } from "./firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebaseConfig";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 const storage = getStorage();
+
+// header
+export const getImagenHeader = async () => {
+    try {
+        const imageRef = ref(storage, "header/fondo.png");
+        const url = await getDownloadURL(imageRef);
+        return url;
+    } catch (error) {
+        console.error("Error al obtener la imagen de fondo del Header:", error);
+        return null; 
+    }
+};
 
 // aside.jsx
 export const getImagenPerfil = async () => {
@@ -22,19 +33,19 @@ export const getImagenPerfil = async () => {
 
 export const getDataContactos = async () => {
     try {
-      const querySnapshot = await getDocs(collection(db, "contacto"));
-      const linksContacto = querySnapshot.docs
+        const querySnapshot = await getDocs(collection(db, "contacto"));
+        const linksContacto = querySnapshot.docs
         .filter((doc) => doc.id !== "whatsapp") 
         .map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
+            id: doc.id,
+            ...doc.data(),
         }));
-      return linksContacto;
+        return linksContacto;
     } catch (error) {
-      console.error("Error al obtener los datos de contacto:", error);
-      return [];
+        console.error("Error al obtener los datos de contacto:", error);
+        return [];
     }
-  };
+    };
 
 
 // inicio.jsx
@@ -119,39 +130,6 @@ export const getDataTecnicaturaCursos = async () => {
     }
 };
 
-// export const getTitulos = async () => {
-//     try {
-//         const querySnapshot = await getDocs(collection(db, "titulos y certificaciones"));
-//         return querySnapshot.docs.map(doc => ({
-//             id: doc.id,
-//             ...doc.data(),
-            
-//         }));
-//     } catch (error) {
-//         console.error("Error al obtener títulos y certificaciones:", error);
-//         return [];
-//     }
-// };
-
-// export const getTitulos = async () => {
-//     try {
-//         const querySnapshot = await getDocs(collection(db, "titulos y certificaciones"));
-//         const titulosData = querySnapshot.docs.map((doc) => {
-//             const data = doc.data();
-//             console.log("Documento obtenido:", data);
-//             return { id: doc.id, ...data };
-//         });
-
-//         console.log("Títulos completos:", titulosData);
-//         return titulosData;
-//     } catch (error) {
-//         console.error("Error al obtener títulos y certificaciones:", error);
-//         return [];
-//     }
-// };
-
-
-
 export const getTitulos = async () => {
     try {
         const querySnapshot = await getDocs(collection(db, "titulos y certificaciones"));
@@ -159,7 +137,6 @@ export const getTitulos = async () => {
             querySnapshot.docs.map(async (doc) => {
                 const data = doc.data();
                 try {
-                    // Obtener la URL de la imagen en Firebase Storage
                     const imageUrl = await getDownloadURL(ref(storage, data.imagen));
                     return { id: doc.id, ...data, imagen: imageUrl };
                 } catch (error) {
@@ -206,7 +183,6 @@ export const getDataEmpleadores = async () => {
 };
 
 // whatsapp
-
 export const getWhatsApp = async () => {
     try {
         const db = getFirestore();
